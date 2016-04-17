@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "WPFrame.h"
+#import "WPFrames.h"
+#import <LTInfiniteScrollView/LTInfiniteScrollView.h>
 
-@interface CameraViewController : UIImagePickerController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
-
-@property (nonatomic) NSArray<WPFrame*> *frames;
+@interface CameraViewController : UIImagePickerController
 
 @end

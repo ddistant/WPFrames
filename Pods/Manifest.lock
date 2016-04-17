@@ -1,0 +1,10 @@
+PODS:
+  - LTInfiniteScrollView (4.3.2)
+
+DEPENDENCIES:
+  - LTInfiniteScrollView (~> 4.3)
+
+SPEC CHECKSUMS:
+  LTInfiniteScrollView: 6ce2fcaf6d030a9e45a164ba9dcdb1b325a30d03
+
+COCOAPODS: 0.38.2
