@@ -11,6 +11,6 @@
 
 @interface WPFrames : NSArray
 
--(instancetype) initWithFrames;
+-(WPFrames *) initWithFrames;
 
 @end

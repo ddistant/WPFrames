@@ -25,15 +25,27 @@ LTInfiniteScrollViewDelegate
 
 -(void)viewDidLoad {
     
-    self.frames = [[WPFrames alloc] initWithFrames];
+    [super viewDidLoad];
+    
+    //delegates
+    
     self.delegate = self;
     self.scrollView.delegate = self;
-    [self setupCamera];
+    self.scrollView.dataSource = self;
+    
+    //data
+    
+    [self createFrames];
+    
+    //views 
+    
     [self setupScrollView];
+    [self setupCamera];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
     
+    [super viewDidAppear:YES];
 //    [self.scrollView reloadDataWithInitialIndex:0];
     
 }
@@ -59,7 +71,7 @@ LTInfiniteScrollViewDelegate
         
         self.sourceType = UIImagePickerControllerSourceTypeCamera;
         self.cameraDevice = UIImagePickerControllerCameraDeviceFront;
-        self.showsCameraControls = NO;
+        self.showsCameraControls = YES;
         self.cameraOverlayView = self.scrollView;
     }
 }
@@ -78,7 +90,14 @@ LTInfiniteScrollViewDelegate
 #pragma mark - scrollView data source
 
 -(void) setupScrollView {
-    self.scrollView = [[LTInfiniteScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
+    
+    //weirdly enough, LTInfiniteScrollView doesn't seem to work without an outlet from storyboard/nib
+    
+    self.scrollView = [[[NSBundle mainBundle] loadNibNamed:@"InfiniteScrollView" owner:nil options:nil] lastObject];
+    self.scrollView.layer.backgroundColor = [UIColor clearColor].CGColor;
+    self.scrollView.verticalScroll = NO;
+    self.scrollView.maxScrollDistance = 2.5;
+    
 }
 
 -(NSInteger)numberOfViews {
@@ -93,23 +112,60 @@ LTInfiniteScrollViewDelegate
 
 -(UIView *)viewAtIndex:(NSInteger)index reusingView:(UIView *)view {
     
-//    if (view) {
-//        <#statements#>
-//    }
+    if (view) {
+        ((UILabel *)view).text = @"hello";
+        return view;
+    }
     
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width - 20, self.view.bounds.size.height - 20)];
-    label.backgroundColor = [UIColor lightGrayColor];
-    label.textColor = [UIColor whiteColor];
-    label.textAlignment = NSTextAlignmentCenter;
-    label.text = [[self.frames objectAtIndex:index] title];
+    UILabel *aView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width - 20, CGRectGetHeight(self.view.bounds))];
+    aView.backgroundColor = [UIColor blackColor];
+    aView.backgroundColor = [UIColor darkGrayColor];
+    aView.textColor = [UIColor whiteColor];
+    aView.textAlignment = NSTextAlignmentCenter;
+    aView.text = @"hello world";
     
-    return label;
+    return aView;
 }
 
 - (void) updateView:(UIView *)view withProgress:(CGFloat)progress scrollDirection:(ScrollDirection)direction {
     
     CGFloat scale = 1 - fabs(progress) * 0.15;
     view.transform = CGAffineTransformMakeScale(scale, scale);
+}
+
+//this will be refactored - creating data in the cameraVC isn't a great idea
+
+#pragma mark - data
+
+-(void) createFrames {
+    //1
+    
+    WPFrame *wiloughby = [[WPFrame alloc] initWithTitle:@"wiloughby"];
+    wiloughby.color = @"Tennessee Whiskey";
+    wiloughby.descriptionString = @"Wiloughby helps you stand out in any crowd with its oversized eye wires and temples.";
+    wiloughby.size = @"Medium";
+    wiloughby.measurements = @"52-18-138";
+    wiloughby.image = [UIImage imageNamed:@"wiloughby"];
+    
+    //2
+    
+    WPFrame *talbot = [[WPFrame alloc] initWithTitle:@"talbot"];
+    talbot.color = @"Striped Pacific";
+    talbot.descriptionString = @"A medium-sized frame, Talbot offers the best of both worlds with its half-stainless steel, half-acetate construction.";
+    talbot.size = @"Medium";
+    talbot.measurements = @"49-19-145";
+    talbot.image = [UIImage imageNamed:@"talbot"];
+    
+    //3
+    
+    WPFrame *arthur = [[WPFrame alloc] initWithTitle:@"arthur"];
+    arthur.color = @"Green Spruce";
+    arthur.descriptionString = @"Arthur's bold browline, keyhole bridge, and slim temple arms ensure that no encounter leaves you unnoticed.";
+    arthur.size = @"Medium";
+    arthur.measurements = @"52-18-138";
+    arthur.image = [UIImage imageNamed:@"arthur"];
+    
+    self.frames = [[NSArray alloc] initWithObjects: wiloughby, talbot, arthur, nil];
 }
 
 @end
