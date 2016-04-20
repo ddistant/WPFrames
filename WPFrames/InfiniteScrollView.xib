@@ -23,7 +23,7 @@
                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                             <state key="normal" title="More"/>
                             <connections>
-                                <action selector="moreButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="gTe-BD-ImX"/>
+                                <action selector="moreButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="Q3n-RJ-pBD"/>
                             </connections>
                         </button>
                     </subviews>
@@ -44,7 +44,7 @@
                                 <constraint firstAttribute="width" constant="60" id="paO-oG-FMF"/>
                             </constraints>
                             <connections>
-                                <action selector="cameraButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="Hfc-mi-KNN"/>
+                                <action selector="cameraButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="Jj1-FM-wri"/>
                             </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PsQ-gX-8J3" userLabel="buttonContainer">
@@ -91,6 +91,7 @@
                 </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <gestureRecognizers/>
             <constraints>
                 <constraint firstItem="uOF-KL-EGb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="0zJ-wf-Rs7"/>
                 <constraint firstItem="uOF-KL-EGb" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="MkS-Uw-Rdz"/>
@@ -101,10 +102,6 @@
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
-            <connections>
-                <outlet property="cameraButton" destination="KXD-XF-few" id="lD5-Ul-wqm"/>
-                <outlet property="moreButton" destination="jKH-vU-kV7" id="G7r-Ok-1hC"/>
-            </connections>
         </view>
     </objects>
 </document>

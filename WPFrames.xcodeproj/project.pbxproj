@@ -21,6 +21,8 @@
 		22113BC21CC721A30003A238 /* FrameView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22113BC11CC721A30003A238 /* FrameView.xib */; };
 		22113BC51CC722280003A238 /* FrameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22113BC41CC722280003A238 /* FrameView.m */; };
 		22113BC81CC722BC0003A238 /* InfiniteScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22113BC71CC722BC0003A238 /* InfiniteScrollView.m */; };
+		22113BCD1CC7362A0003A238 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22113BCC1CC7362A0003A238 /* WebKit.framework */; };
+		22113BD01CC74C4B0003A238 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22113BCF1CC74C4B0003A238 /* WebViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,9 @@
 		22113BC41CC722280003A238 /* FrameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FrameView.m; sourceTree = "<group>"; };
 		22113BC61CC722BC0003A238 /* InfiniteScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfiniteScrollView.h; sourceTree = "<group>"; };
 		22113BC71CC722BC0003A238 /* InfiniteScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfiniteScrollView.m; sourceTree = "<group>"; };
+		22113BCC1CC7362A0003A238 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		22113BCE1CC74C4B0003A238 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		22113BCF1CC74C4B0003A238 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		64632F6D2F0820E6BDAAD3DF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F38715462C8B57B4FC0A7C5 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A622F8E27EC46A6B544D77B3 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -67,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22113BCD1CC7362A0003A238 /* WebKit.framework in Frameworks */,
 				0A55F6D03A5942294853769C /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -109,6 +115,8 @@
 				22113B8D1CC2E0020003A238 /* AppDelegate.m */,
 				22113BB51CC2F4840003A238 /* CameraViewController.h */,
 				22113BB61CC2F4840003A238 /* CameraViewController.m */,
+				22113BCE1CC74C4B0003A238 /* WebViewController.h */,
+				22113BCF1CC74C4B0003A238 /* WebViewController.m */,
 				22113BC61CC722BC0003A238 /* InfiniteScrollView.h */,
 				22113BC71CC722BC0003A238 /* InfiniteScrollView.m */,
 				22113BBF1CC54E640003A238 /* InfiniteScrollView.xib */,
@@ -164,6 +172,7 @@
 		A922DA7649FCD89900873C25 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				22113BCC1CC7362A0003A238 /* WebKit.framework */,
 				64632F6D2F0820E6BDAAD3DF /* libPods.a */,
 			);
 			name = Frameworks;
@@ -309,6 +318,7 @@
 				22113BC51CC722280003A238 /* FrameView.m in Sources */,
 				22113B8E1CC2E0020003A238 /* AppDelegate.m in Sources */,
 				22113BB71CC2F4840003A238 /* CameraViewController.m in Sources */,
+				22113BD01CC74C4B0003A238 /* WebViewController.m in Sources */,
 				22113BC81CC722BC0003A238 /* InfiniteScrollView.m in Sources */,
 				22113BBD1CC41A790003A238 /* WPFrames.m in Sources */,
 				22113BB21CC2EC480003A238 /* WPFrame.m in Sources */,

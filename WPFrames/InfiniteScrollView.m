@@ -10,16 +10,16 @@
 
 @implementation InfiniteScrollView
 
-- (IBAction)moreButtonPressed:(id)sender {
+- (IBAction)moreButtonTapped:(UIButton *)sender {
     
-    NSLog(@"more button pressed");
+    NSLog(@"more tapped");
     [self.infiniteDelegate moreButtonTapped];
 }
 
-- (IBAction)cameraButtonPressed:(id)sender {
-    
-    NSLog(@"camera button pressed");
+- (IBAction)cameraButtonTapped:(UIButton *)sender {
+    NSLog(@"camera button tapped");
     [self.infiniteDelegate cameraButtonTapped];
 }
+
 
 @end

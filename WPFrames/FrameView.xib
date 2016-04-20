@@ -8,9 +8,87 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="FrameView">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <rect key="frame" x="0.0" y="0.0" width="600" height="450"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="willoughby" translatesAutoresizingMaskIntoConstraints="NO" id="Wfi-PX-dvX">
+                    <rect key="frame" x="40" y="69" width="520" height="166"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="titleLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RAB-Wk-xMW">
+                    <rect key="frame" x="40" y="280" width="180" height="35.5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="180" id="X76-m1-5ZJ"/>
+                        <constraint firstAttribute="width" constant="120" id="bCq-Mk-lHv"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="32"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="bCq-Mk-lHv"/>
+                        </mask>
+                    </variation>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="colorLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iai-oM-2kj">
+                    <rect key="frame" x="40" y="332" width="72" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="descriptionLabel" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="noO-a5-F63">
+                    <rect key="frame" x="308" y="280" width="252" height="70"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="70" id="HYn-Fh-ZTI"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yellowStarIcon" translatesAutoresizingMaskIntoConstraints="NO" id="5ap-U9-WJh">
+                    <rect key="frame" x="547" y="8" width="45" height="45"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="45" id="8gu-mX-O3t"/>
+                        <constraint firstAttribute="height" constant="45" id="pnX-fE-msc"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="noO-a5-F63" secondAttribute="trailing" constant="40" id="Bl5-SI-c1T"/>
+                <constraint firstItem="RAB-Wk-xMW" firstAttribute="top" secondItem="Wfi-PX-dvX" secondAttribute="bottom" constant="45" id="F19-hK-URE"/>
+                <constraint firstItem="RAB-Wk-xMW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="40" id="Ohl-B4-D9y"/>
+                <constraint firstItem="noO-a5-F63" firstAttribute="top" secondItem="Wfi-PX-dvX" secondAttribute="bottom" constant="45" id="P7K-vQ-OUt"/>
+                <constraint firstItem="Wfi-PX-dvX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="69" id="Pf8-qr-G2d"/>
+                <constraint firstItem="RAB-Wk-xMW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="40" id="Wrg-5g-hFg"/>
+                <constraint firstAttribute="trailing" secondItem="5ap-U9-WJh" secondAttribute="trailing" constant="8" id="a9h-vC-0fT"/>
+                <constraint firstItem="iai-oM-2kj" firstAttribute="bottom" secondItem="noO-a5-F63" secondAttribute="bottom" id="cu5-lV-jAG"/>
+                <constraint firstItem="Wfi-PX-dvX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="40" id="e9x-76-6mm"/>
+                <constraint firstItem="5ap-U9-WJh" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="ep0-AJ-Pu6"/>
+                <constraint firstAttribute="bottom" secondItem="Wfi-PX-dvX" secondAttribute="bottom" constant="215" id="f3J-hs-Fbz"/>
+                <constraint firstItem="iai-oM-2kj" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="40" id="ilK-aV-Jqf"/>
+                <constraint firstItem="noO-a5-F63" firstAttribute="leading" secondItem="RAB-Wk-xMW" secondAttribute="trailing" constant="88" id="jXU-77-BkS"/>
+                <constraint firstAttribute="trailing" secondItem="Wfi-PX-dvX" secondAttribute="trailing" constant="40" id="vh0-uA-Dyj"/>
+                <constraint firstItem="RAB-Wk-xMW" firstAttribute="top" secondItem="Wfi-PX-dvX" secondAttribute="bottom" constant="45" id="zlp-oz-tv4"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="F19-hK-URE"/>
+                    <exclude reference="Wrg-5g-hFg"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="colorLabel" destination="iai-oM-2kj" id="jqt-ki-jje"/>
+                <outlet property="descriptionLabel" destination="noO-a5-F63" id="GsA-hM-gFw"/>
+                <outlet property="favoriteIcon" destination="5ap-U9-WJh" id="9zr-XH-n6P"/>
+                <outlet property="imageView" destination="Wfi-PX-dvX" id="22L-xb-jeC"/>
+                <outlet property="titleLabel" destination="RAB-Wk-xMW" id="Poc-Qj-zjY"/>
+            </connections>
+            <point key="canvasLocation" x="245" y="431"/>
         </view>
     </objects>
+    <resources>
+        <image name="willoughby" width="1670" height="498"/>
+        <image name="yellowStarIcon" width="128" height="128"/>
+    </resources>
 </document>

@@ -30,14 +30,16 @@ InfiniteScrollViewDelegate
     
     //delegates
     
+    //data
+    
+    [self createFrames];
+    
+    //data
+    
     self.delegate = self;
     self.scrollView.delegate = self;
     self.scrollView.dataSource = self;
     self.scrollView.infiniteDelegate = self;
-    
-    //data
-    
-    [self createFrames];
     
     //views 
     
@@ -107,24 +109,20 @@ InfiniteScrollViewDelegate
     
     //weirdly enough, LTInfiniteScrollView doesn't seem to work without an outlet from storyboard/nib
     
-    self.scrollView = [[[NSBundle mainBundle] loadNibNamed:@"InfiniteScrollView" owner:self options:nil] lastObject];
+    self.scrollView = [[[NSBundle mainBundle] loadNibNamed:@"InfiniteScrollView" owner:nil options:nil] lastObject];
     
     self.scrollView.frame = self.view.frame;
     self.scrollView.verticalScroll = NO;
     self.scrollView.maxScrollDistance = 2.5;
-    self.scrollView.userInteractionEnabled = YES;
-    self.scrollView.scrollEnabled = YES;
     
 }
 
 -(NSInteger)numberOfViews {
-    return 0;
-    
-//    self.frames.count;
+    return self.frames.count;
 }
 
 -(NSInteger)numberOfVisibleViews {
-    return 0;
+    return 1;
 }
 
 #pragma mark - scrollView delegate
@@ -132,24 +130,20 @@ InfiniteScrollViewDelegate
 -(UIView *)viewAtIndex:(NSInteger)index reusingView:(UIView *)view {
     
     if (view) {
-        ((UILabel *)view).text = @"hello";
+        
+        ((FrameView *)view).descriptionLabel.text = [[self.frames objectAtIndex:index] descriptionString];
         return view;
     }
     
-    UILabel *aView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
-    aView.backgroundColor = [UIColor blackColor];
-    aView.backgroundColor = [UIColor darkGrayColor];
-    aView.textColor = [UIColor whiteColor];
-    aView.textAlignment = NSTextAlignmentCenter;
-    aView.text = @"hello world";
+    FrameView *frameView = [[[NSBundle mainBundle] loadNibNamed:@"FrameView" owner:nil options:nil] lastObject];
     
-    return aView;
+    return frameView;
 }
 
 - (void) updateView:(UIView *)view withProgress:(CGFloat)progress scrollDirection:(ScrollDirection)direction {
     
-    CGFloat scale = 1 - fabs(progress) * 0.15;
-    view.transform = CGAffineTransformMakeScale(scale, scale);
+//    CGFloat scale = 1 - fabs(progress) * 0.15;
+//    view.transform = CGAffineTransformMakeScale(scale, scale);
 }
 
 #pragma mark - infinite delegate
@@ -165,6 +159,12 @@ InfiniteScrollViewDelegate
     
     NSLog(@"more button tapped");
     
+    WebViewController *webVC = [[WebViewController alloc] init];
+//    webVC.frameTitle = //needs to be implemented
+//    webVC.frameColor = //needs to be implemented
+    
+    [self presentViewController:webVC animated:YES completion:nil];
+    
 }
 
 //this will be refactored - creating data in the cameraVC isn't a great idea
@@ -179,7 +179,7 @@ InfiniteScrollViewDelegate
     wiloughby.descriptionString = @"Wiloughby helps you stand out in any crowd with its oversized eye wires and temples.";
     wiloughby.size = @"Medium";
     wiloughby.measurements = @"52-18-138";
-    wiloughby.image = [UIImage imageNamed:@"wiloughby"];
+    wiloughby.image = [UIImage imageNamed:@"willoughby"]; //screwed up the name, its one 'l'
     
     //2
     

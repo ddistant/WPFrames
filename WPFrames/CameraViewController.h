@@ -11,6 +11,8 @@
 #import "WPFrames.h"
 #import <LTInfiniteScrollView/LTInfiniteScrollView.h>
 #import "InfiniteScrollView.h"
+#import "WebViewController.h"
+#import "FrameView.h"
 
 @interface CameraViewController : UIImagePickerController
 
