@@ -13,11 +13,12 @@
 UIImagePickerControllerDelegate,
 UINavigationControllerDelegate,
 LTInfiniteScrollViewDataSource,
-LTInfiniteScrollViewDelegate
+LTInfiniteScrollViewDelegate,
+InfiniteScrollViewDelegate
 >
 
 @property (nonatomic) NSArray *frames;
-@property (nonatomic) LTInfiniteScrollView *scrollView;
+@property (nonatomic) InfiniteScrollView *scrollView;
 
 @end
 
@@ -32,6 +33,7 @@ LTInfiniteScrollViewDelegate
     self.delegate = self;
     self.scrollView.delegate = self;
     self.scrollView.dataSource = self;
+    self.scrollView.infiniteDelegate = self;
     
     //data
     
@@ -71,7 +73,19 @@ LTInfiniteScrollViewDelegate
         
         self.sourceType = UIImagePickerControllerSourceTypeCamera;
         self.cameraDevice = UIImagePickerControllerCameraDeviceFront;
-        self.showsCameraControls = YES;
+        
+        //resize camera
+        
+        CGSize screenSize = [[UIScreen mainScreen] bounds].size;
+        float cameraAspectRatio = 4.0 / 3.0;
+        float imageHeight = floorf(screenSize.width * cameraAspectRatio);
+        float scale = screenSize.height / imageHeight;
+        float trans = (screenSize.height - imageHeight)/2;
+        CGAffineTransform translate = CGAffineTransformMakeTranslation(0.0, trans);
+        CGAffineTransform final = CGAffineTransformScale(translate, scale, scale);
+        self.cameraViewTransform = final;
+        
+        self.showsCameraControls = NO;
         self.cameraOverlayView = self.scrollView;
     }
 }
@@ -93,19 +107,24 @@ LTInfiniteScrollViewDelegate
     
     //weirdly enough, LTInfiniteScrollView doesn't seem to work without an outlet from storyboard/nib
     
-    self.scrollView = [[[NSBundle mainBundle] loadNibNamed:@"InfiniteScrollView" owner:nil options:nil] lastObject];
-    self.scrollView.layer.backgroundColor = [UIColor clearColor].CGColor;
+    self.scrollView = [[[NSBundle mainBundle] loadNibNamed:@"InfiniteScrollView" owner:self options:nil] lastObject];
+    
+    self.scrollView.frame = self.view.frame;
     self.scrollView.verticalScroll = NO;
     self.scrollView.maxScrollDistance = 2.5;
+    self.scrollView.userInteractionEnabled = YES;
+    self.scrollView.scrollEnabled = YES;
     
 }
 
 -(NSInteger)numberOfViews {
-    return self.frames.count;
+    return 0;
+    
+//    self.frames.count;
 }
 
 -(NSInteger)numberOfVisibleViews {
-    return 1;
+    return 0;
 }
 
 #pragma mark - scrollView delegate
@@ -117,7 +136,7 @@ LTInfiniteScrollViewDelegate
         return view;
     }
     
-    UILabel *aView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width - 20, CGRectGetHeight(self.view.bounds))];
+    UILabel *aView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
     aView.backgroundColor = [UIColor blackColor];
     aView.backgroundColor = [UIColor darkGrayColor];
     aView.textColor = [UIColor whiteColor];
@@ -131,6 +150,21 @@ LTInfiniteScrollViewDelegate
     
     CGFloat scale = 1 - fabs(progress) * 0.15;
     view.transform = CGAffineTransformMakeScale(scale, scale);
+}
+
+#pragma mark - infinite delegate
+
+-(void)cameraButtonTapped {
+    
+    NSLog(@"camera button tapped");
+    
+    [self takePicture];
+}
+
+-(void)moreButtonTapped {
+    
+    NSLog(@"more button tapped");
+    
 }
 
 //this will be refactored - creating data in the cameraVC isn't a great idea
