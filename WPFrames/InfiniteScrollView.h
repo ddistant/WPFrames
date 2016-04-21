@@ -10,6 +10,8 @@
 
 @protocol InfiniteScrollViewDelegate <NSObject>
 
+@required
+
 -(void) moreButtonTapped;
 
 -(void) cameraButtonTapped;
@@ -20,6 +22,6 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *moreButton;
 @property (weak, nonatomic) IBOutlet UIButton *cameraButton;
-@property (weak, nonatomic) id<InfiniteScrollViewDelegate> infiniteDelegate;
+@property (strong, nonatomic) id<InfiniteScrollViewDelegate> infiniteDelegate;
 
 @end

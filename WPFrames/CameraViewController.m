@@ -9,16 +9,9 @@
 #import "CameraViewController.h"
 
 @interface CameraViewController ()
-<
-UIImagePickerControllerDelegate,
-UINavigationControllerDelegate,
-LTInfiniteScrollViewDataSource,
-LTInfiniteScrollViewDelegate,
-InfiniteScrollViewDelegate
->
 
 @property (nonatomic) NSArray *frames;
-@property (nonatomic) InfiniteScrollView *scrollView;
+@property (strong, nonatomic) InfiniteScrollView *scrollView;
 
 @end
 
@@ -30,28 +23,16 @@ InfiniteScrollViewDelegate
     
     //delegates
     
+    self.delegate = self;
+    
     //data
     
     [self createFrames];
-    
-    //data
-    
-    self.delegate = self;
-    self.scrollView.delegate = self;
-    self.scrollView.dataSource = self;
-    self.scrollView.infiniteDelegate = self;
-    
+
     //views 
     
     [self setupScrollView];
     [self setupCamera];
-}
-
--(void)viewDidAppear:(BOOL)animated {
-    
-    [super viewDidAppear:YES];
-//    [self.scrollView reloadDataWithInitialIndex:0];
-    
 }
 
 -(void) showAlertCameraUnavailable {
@@ -107,7 +88,7 @@ InfiniteScrollViewDelegate
 
 -(void) setupScrollView {
     
-    //weirdly enough, LTInfiniteScrollView doesn't seem to work without an outlet from storyboard/nib
+    //weirdly enough, LTInfiniteScrollView doesn't seem to work without a nib
     
     self.scrollView = [[[NSBundle mainBundle] loadNibNamed:@"InfiniteScrollView" owner:nil options:nil] lastObject];
     
@@ -115,6 +96,15 @@ InfiniteScrollViewDelegate
     self.scrollView.verticalScroll = NO;
     self.scrollView.maxScrollDistance = 2.5;
     
+    //delegates
+    
+    self.scrollView.delegate = self;
+    self.scrollView.dataSource = self;
+    self.scrollView.infiniteDelegate = self;
+    
+    //this method is necessary, according to documentation
+    
+    [self.scrollView reloadDataWithInitialIndex:0];
 }
 
 -(NSInteger)numberOfViews {
@@ -136,6 +126,15 @@ InfiniteScrollViewDelegate
     }
     
     FrameView *frameView = [[[NSBundle mainBundle] loadNibNamed:@"FrameView" owner:nil options:nil] lastObject];
+    
+    frameView.favoriteIcon.hidden = YES;
+    frameView.titleLabel.text = [[self.frames objectAtIndex:index] frameTitle];
+    frameView.titleLabel.textColor = [UIColor whiteColor];
+    frameView.imageView.image = [[self.frames objectAtIndex:index] photo];
+    frameView.colorLabel.text = [[self.frames objectAtIndex:index] frameColor];
+    frameView.colorLabel.textColor = [UIColor whiteColor];
+    frameView.descriptionLabel.text = [[self.frames objectAtIndex:index] descriptionString];
+    frameView.descriptionLabel.textColor = [UIColor whiteColor];
     
     return frameView;
 }
@@ -175,29 +174,29 @@ InfiniteScrollViewDelegate
     //1
     
     WPFrame *wiloughby = [[WPFrame alloc] initWithTitle:@"wiloughby"];
-    wiloughby.color = @"Tennessee Whiskey";
+    wiloughby.frameColor = @"Tennessee Whiskey";
     wiloughby.descriptionString = @"Wiloughby helps you stand out in any crowd with its oversized eye wires and temples.";
     wiloughby.size = @"Medium";
     wiloughby.measurements = @"52-18-138";
-    wiloughby.image = [UIImage imageNamed:@"willoughby"]; //screwed up the name, its one 'l'
+    wiloughby.photo = [UIImage imageNamed:@"willoughby"]; //screwed up the name, its one 'l'
     
     //2
     
     WPFrame *talbot = [[WPFrame alloc] initWithTitle:@"talbot"];
-    talbot.color = @"Striped Pacific";
+    talbot.frameColor = @"Striped Pacific";
     talbot.descriptionString = @"A medium-sized frame, Talbot offers the best of both worlds with its half-stainless steel, half-acetate construction.";
     talbot.size = @"Medium";
     talbot.measurements = @"49-19-145";
-    talbot.image = [UIImage imageNamed:@"talbot"];
+    talbot.photo = [UIImage imageNamed:@"talbot"];
     
     //3
     
     WPFrame *arthur = [[WPFrame alloc] initWithTitle:@"arthur"];
-    arthur.color = @"Green Spruce";
+    arthur.frameColor = @"Green Spruce";
     arthur.descriptionString = @"Arthur's bold browline, keyhole bridge, and slim temple arms ensure that no encounter leaves you unnoticed.";
     arthur.size = @"Medium";
     arthur.measurements = @"52-18-138";
-    arthur.image = [UIImage imageNamed:@"arthur"];
+    arthur.photo = [UIImage imageNamed:@"arthur"];
     
     self.frames = [[NSArray alloc] initWithObjects: wiloughby, talbot, arthur, nil];
 }

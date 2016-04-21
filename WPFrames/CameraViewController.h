@@ -16,4 +16,12 @@
 
 @interface CameraViewController : UIImagePickerController
 
+<
+UIImagePickerControllerDelegate,
+UINavigationControllerDelegate,
+LTInfiniteScrollViewDataSource,
+LTInfiniteScrollViewDelegate,
+InfiniteScrollViewDelegate
+>
+
 @end

@@ -11,12 +11,12 @@
 
 @interface WPFrame : NSObject
 
-@property (nonatomic) NSString *title;
-@property (nonatomic) NSString *color;
+@property (nonatomic) NSString *frameTitle;
+@property (nonatomic) NSString *frameColor;
 @property (nonatomic) NSString *descriptionString;
 @property (nonatomic) NSString *size;
 @property (nonatomic) NSString *measurements;
-@property (nonatomic) UIImage *image;
+@property (nonatomic) UIImage *photo;
 @property (nonatomic) BOOL isFavorited;
 
 -(WPFrame *) initWithTitle:(NSString *)title;

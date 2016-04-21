@@ -14,7 +14,7 @@
     self = [super init];
     
     if (self) {
-        self.title = title;
+        self.frameTitle = title;
     }
     
     return self;
