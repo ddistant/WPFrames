@@ -14,7 +14,6 @@
 @interface WebViewController : UIViewController
 
 @property (nonatomic) WKWebView *webView;
-
 @property (nonatomic) NSString *frameTitle;
 @property (nonatomic) NSString *frameColor;
 

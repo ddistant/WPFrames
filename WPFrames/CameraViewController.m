@@ -10,7 +10,7 @@
 
 @interface CameraViewController ()
 
-@property (nonatomic) NSArray *frames;
+@property (nonatomic) NSArray <WPFrame *>*frames;
 @property (strong, nonatomic) InfiniteScrollView *scrollView;
 
 @end
@@ -21,13 +21,13 @@
     
     [super viewDidLoad];
     
-    //delegates
-    
-    self.delegate = self;
-    
     //data
     
     [self createFrames];
+    
+    //delegates
+    
+    self.delegate = self;
 
     //views 
     
@@ -171,6 +171,7 @@
 #pragma mark - data
 
 -(void) createFrames {
+    
     //1
     
     WPFrame *wiloughby = [[WPFrame alloc] initWithTitle:@"wiloughby"];
@@ -178,7 +179,7 @@
     wiloughby.descriptionString = @"Wiloughby helps you stand out in any crowd with its oversized eye wires and temples.";
     wiloughby.size = @"Medium";
     wiloughby.measurements = @"52-18-138";
-    wiloughby.photo = [UIImage imageNamed:@"willoughby"]; //screwed up the name, its one 'l'
+    wiloughby.photo = [UIImage imageNamed:@"wiloughby"]; //screwed up the name, its one 'l'
     
     //2
     
@@ -198,7 +199,16 @@
     arthur.measurements = @"52-18-138";
     arthur.photo = [UIImage imageNamed:@"arthur"];
     
-    self.frames = [[NSArray alloc] initWithObjects: wiloughby, talbot, arthur, nil];
+    //4
+    
+    WPFrame *testFrame = [[WPFrame alloc] initWithTitle:@"testFrame"];
+    testFrame.frameColor = @"test color";
+    testFrame.descriptionString = @"test frame test frame test frame test frame test frame.";
+    testFrame.size = @"Medium";
+    testFrame.measurements = @"53-22-121";
+    testFrame.photo = [UIImage imageNamed:@"testFrame"];
+    
+    self.frames = @[talbot, arthur, testFrame, wiloughby];
 }
 
 @end

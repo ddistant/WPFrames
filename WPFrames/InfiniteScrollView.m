@@ -21,5 +21,17 @@
     [self.infiniteDelegate cameraButtonTapped];
 }
 
+-(void)drawRect:(CGRect)rect {
+    
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped)];
+    
+    [self.topView addGestureRecognizer:tapGestureRecognizer];
+}
+
+-(void) tapped {
+    NSLog(@"tapped");
+}
+
+
 
 @end

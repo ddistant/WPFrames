@@ -22,6 +22,11 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *moreButton;
 @property (weak, nonatomic) IBOutlet UIButton *cameraButton;
+
+@property (weak, nonatomic) IBOutlet UIView *topView;
+@property (weak, nonatomic) IBOutlet UIView *bottomView;
+
+
 @property (strong, nonatomic) id<InfiniteScrollViewDelegate> infiniteDelegate;
 
 @end
